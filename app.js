@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = 'c76b8d13d062428585c234eb56e076e8'; // Your client id
 var client_secret = '0cf6dff56c2d44919c3554e397f305f4'; // Your secret
-var redirect_uri = 'https://developer.spotify.com/'; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -144,4 +144,5 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
+console.log('https://localhost:8888')
 app.listen(8888);
