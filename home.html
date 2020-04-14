@@ -30,6 +30,15 @@
   </div>
 </div>
 <script>
+var section = 1;
+// $(function() {
+//   $("a.menuitem").click(function() {
+//     ...
+//     $("<div></div>").attr("id", "section" + section++).appendTo("#content_pane");
+//     ...
+//     return false;
+//   });
+// });
 function readURL(input) {
 if (input.files && input.files[0]) {
 var reader = new FileReader();
@@ -43,9 +52,13 @@ reader.readAsDataURL(input.files[0]);
 
 function submitfunction()
 {
+
   // var uniq= document.createElement("newsun");
   // uniq.setAttribute("newsun", "blah"); //+(new Date()).getTime(
- $("#blah").prependTo("#photos");
+  section = section +1;
+  $("#blah").attr("id", "section"+ section);
+ $("#section"+ section).prependTo("#photos");
+ //$('img#blah').removeAttr('id');
   //$("#blah").prependTo("#photos");
 
 }
