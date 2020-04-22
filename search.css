@@ -3,14 +3,16 @@
     color: #0f7c35;
 }
 
-a {
-    color: white;
-    text-decoration: none;
-}
-
 body {
     margin: 0;
     background-image: url("purplehome.png");
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    
 }
 
 input:focus {
@@ -59,7 +61,7 @@ button {
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0);
 }
 
-.odd_even_container {
+.one-of-twenty-container {
     display: flex;
     align-items: center;
     width: 80vw;
@@ -67,11 +69,11 @@ button {
     height: 150px;
 }
 
-.odd_even_container:nth-child(odd) {
+.one-of-twenty-container:nth-child(odd) {
     background-color: black;
 }
 
-.odd_even_container:nth-child(even) {
+.one-of-twenty-container:nth-child(even) {
     background-color: #1db954;
 }
 
