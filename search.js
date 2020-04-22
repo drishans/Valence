@@ -109,7 +109,7 @@
                 var artistUrl = res.items[i].external_urls.spotify;
                 var artistAlbumName = res.items[i].name;
                 music_info +=
-                    '<div class="odd_even_container"><div class="results-albums-artists"><a href="' +
+                    '<div class="one-of-twenty-container"><div class="results-albums-artists"><a href="' +
                     artistUrl +
                     '" target="_blank"><img src="' +
                     imageUrl +
