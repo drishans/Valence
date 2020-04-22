@@ -17,6 +17,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- for Gallery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!----->
+
 <body style="background-color:white;">
   <div class="w3-top">
   <div class="w3-bar w3-black w3-wide w3-padding w3-card">
@@ -24,14 +33,15 @@
     <!-- Navigation -->
     <div class="w3-right w3-hide-small">
       <a href="#Gallery" class="w3-bar-item w3-button">Gallery</a>
-      <a href="search.html" class="w3-bar-item w3-button">Search</a>
       <a href="#Upload" class="w3-bar-item w3-button">Upload</a>
       <a href="#about" class="w3-bar-item w3-button">About</a>
     </div>
   </div>
 </div>
+
+<!-- upload script -->
 <script>
-var section = 1;
+  var section = 1;
 // $(function() {
 //   $("a.menuitem").click(function() {
 //     ...
@@ -40,15 +50,16 @@ var section = 1;
 //     return false;
 //   });
 // });
-function readURL(input) {
-if (input.files && input.files[0]) {
-var reader = new FileReader();
-reader.onload = function (e) {
-    $('#blah').attr('src', e.target.result);
-};
-reader.readAsDataURL(input.files[0]);
-}
 
+// preview image before uploading
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $('#blah').attr('src', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
 function submitfunction()
@@ -58,49 +69,179 @@ function submitfunction()
   // uniq.setAttribute("newsun", "blah"); //+(new Date()).getTime(
   section = section +1;
   $("#blah").attr("id", "section"+ section);
- $("#section"+ section).prependTo("#photos");
+  $("#section"+ section).prependTo("#gallery-section");
  //$('img#blah').removeAttr('id');
   //$("#blah").prependTo("#photos");
 
 }
 
+
 </script>
+
 <!-- Home Section -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
   <img class="w3-image" src="purplehome.png" alt="VALENCE" width="1500" height="600">
 </header>
 <!-- Page content -->
 <div class="w3-content w3-padding" style="max-width:1500px">
+
   <!-- Gallery Section -->
-  <div class="w3-container w3-padding-32" id="Gallery">
-    <audio id="audio_play">
-    <source src="music.mp3" type="audio/mpeg" />
-  </audio>
-    <h3 class="w3-xxlarge w3-text-black w3-wide">Gallery</h3>
+  <div class="gallery-section">
+    <div class="inner-width">
+      <h1>My Gallery</h1>
+      <div class="border"></div>
+      <div class="gallery">
 
-    <section id="photos">
-      <img src="sunflower.jpg">
-      <img src="dark.jpg" onmouseover ="document.getElementById('audio_play').play();" onClick= "document.getElementById('audio_play').pause();"/>
-      <img src="fall.jpg">
-      <img src="love.jpg">
-      <img src="street.jpg">
-      <img src="pink.jpg">
-      <img src="sushi.jpg">
-      <img src="winter.jpg">
-    </section>
+          <a href="img/pink.jpg" class="image">
+            <img src="img/pink.jpg" alt="Pink Image">
+          </a>
 
+          <a href="img/love.jpg" class="image">
+            <img src="img/love.jpg">
+          </a>
+
+          <a href="img/sushi.jpg" class="image">
+            <img src="img/sushi.jpg">
+          </a>
+
+          <a href="img/winter.jpg" class="image">
+            <img src="img/winter.jpg">
+          </a>
+
+          <a href="img/fall.jpg" class="image">
+            <img src="img/fall.jpg">
+          </a>
+
+          <a href="img/street.jpg" class="image">
+            <img src="img/street.jpg">
+          </a>
+
+          <a href="img/sunflower.jpg" class="image">
+            <img src="img/sunflower.jpg">
+          </a>
+
+      </div>
+    </div>
   </div>
+
+  <script>
+    $(".gallery").magnificPopup({
+      delegate: 'a',
+      type: 'image',
+      gallery: {
+        enabled: true
+      }
+    })
+  </script>
+
+  <!------------------------------------------------------------------------>
+
   <!-- Upload (for now) Section -->
   <div class="w3-container w3-padding-32" id="Upload">
     <h3 class="w3-xxlarge w3-text-black w3-wide">Upload</h3>
-<div class="w3-center">
-  <img id="blah" src="#" />
+    <div class="w3-center">
+      <img id="blah" src="#" />
+      <br>
+      <input type='file' onchange="readURL(this);" />
+      <div class="mt-3">
+        <button type="submit" class="btn btn-primary" onclick = "submitfunction()">Submit</button>
+      </div>
+    </div>
+</div>
+
+<!-- comments -->
   <br>
-  <input type='file' onchange="readURL(this);" />
-  <div class="mt-3">
-    <button type="submit" class="btn btn-primary" onclick = "submitfunction()">Submit</button>
+  <br>
+
+  <div class="form">
+    <h3>Add a Comment</h3>
+    Name: <input type="text" id="name" />
+    <br>
+    Comment: <textarea rows="5" col="20" id="bodyText"></textarea>
+    <br>
+    <br>
+    <input type="button" id="addComment" value="Add Comment" />
   </div>
+
+  <br>
+  <br>
+  <div id="container">
+
+  </div>
+
+  <script>
+    function render(data) {
+      var html = "<div class='commentBox'> <div class='leftPanelImg'><img src='img/pink.jpg'/></div><div class='rightPanel'><span>"
+      +data.name+"</span><p>"+data.body+"</p></div><div class='clear'></div></div>";
+      $('#container').append(html);
+    }
+    $(document).ready(function() {
+
+      // example comment
+      var comment = [
+      {"name": "Amey E", "body": "This is comment 1"}
+      ];
+
+        for(var i =0; i < comment.length; i++)
+        {
+          render(comment[i]);
+        }
+      $('#addComment').click(function()
+      {
+        var addObj = {
+          "name": $('#name').val(),
+          "body": $('#bodyText').val()
+        };
+        console.log(addObj);
+        comment.push(addObj);
+        render(addObj);
+
+        //reset form
+        $('#name').val('');
+        $('#bodyText').val('');
+      });
+
+    });
+
+  </script>
+
+
+  <!------------------------------------------------------------------------>
+
+  <!-- <h3 class="w3-xxlarge w3-text-black w3-wide">Gallery</h3>
+
+  <div id="Gallery">
+      <img src="img/sunflower.jpg">
+      <img src="img/pink.jpg">
+
+  </div>
+
 </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("photos");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    </script> -->
+
 </div>
+
 </body>
 </html>
