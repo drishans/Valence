@@ -1,3 +1,6 @@
+
+
+
 /**
  * This is an example of a basic node.js script that performs
  * the Authorization Code oAuth2 flow to authenticate against
@@ -16,6 +19,19 @@ var cookieParser = require('cookie-parser');
 var client_id = 'c76b8d13d062428585c234eb56e076e8'; // Your client id
 var client_secret = '0cf6dff56c2d44919c3554e397f305f4'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+
+//Create Database Connection
+var pgp = require('pg-promise')();
+
+const dbConfig = {
+	host: 'localhost',
+	port: 8888,
+	database: 'valence_db',
+	user: 'postgres',
+	password: 'alpine'
+};
+
+var db = pgp(dbConfig);
 
 /**
  * Generates a random string containing numbers and letters
