@@ -1,3 +1,5 @@
+-- noinspection SqlDialectInspectionForFile
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -28,7 +30,6 @@ CREATE TYPE genre AS ENUM (
 
 CREATE TABLE user (
     user_id SERIAL PRIMARY KEY,
-    spotify_token 
     username text NOT NULL,
     password text NOT NULL,
     first_name text NOT NULL,
@@ -42,11 +43,18 @@ CREATE TABLE user (
     active integer
 );
 
+CREATE TABLE comment (
+    comment_id SERIAL PRIMARY KEY,
+    user_id int,
+    message text NOT NULL,
+    sent timestamp with time zone
+);
+
 CREATE TABLE photo (
     photo_id SERIAL PRIMARY KEY,
     name text NOT NULL,
     href text,
-    last_update timestamp with time zone DEFAULT now(),
+    last_update timestamp with time zone DEFAULT now()
 );
 
 CREATE TABLE video (
@@ -54,7 +62,7 @@ CREATE TABLE video (
     name text NOT NULL,
     href text,
     duration_ms integer,
-    last_update timestamp with time zone DEFAULT now(),
+    last_update timestamp with time zone DEFAULT now()
 );
 
 CREATE TABLE playlist (
@@ -64,7 +72,7 @@ CREATE TABLE playlist (
     tracks.data --,
     genre text,
     duration_ms integer,
-    last_update timestamp with time zone DEFAULT now(),
+    last_update timestamp with time zone DEFAULT now()
 );
 
 CREATE TABLE track (
@@ -74,15 +82,7 @@ CREATE TABLE track (
     genre text,
     spotify_url text,
     duration_ms integer,
-    last_update timestamp with time zone DEFAULT now(),
-);
-
-CREATE TABLE notification (
-    notif_id SERIAL PRIMARY KEY,
-    user_id int,
-    sender text NOT NULL,
-    type int,
-    sent timestamp with time zone,
+    last_update timestamp with time zone DEFAULT now()
 );
 
 CREATE TABLE artist (
@@ -94,3 +94,4 @@ CREATE TABLE artist (
     last_update timestamp with time zone DEFAULT now(),
     active integer
 );
+
