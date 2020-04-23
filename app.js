@@ -24,7 +24,7 @@ var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 var pgp = require('pg-promise')();
 const dbConfig = {
 	host: 'localhost',
-	port: 8888,
+	port: 5432,
 	database: 'valence_db',
 	user: 'postgres',
 	password: 'alpine'
