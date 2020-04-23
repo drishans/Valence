@@ -22,7 +22,6 @@ var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 //Create Database Connection
 var pgp = require('pg-promise')();
-
 const dbConfig = {
 	host: 'localhost',
 	port: 8888,
@@ -30,7 +29,6 @@ const dbConfig = {
 	user: 'postgres',
 	password: 'alpine'
 };
-
 var db = pgp(dbConfig);
 
 /**
@@ -55,6 +53,17 @@ var app = express();
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
+
+//get comments from db (untested)
+app.get('/comments', function(req, res) {
+  db.query('SELECT * FROM comment ORDER BY date DESC', (error, results) => {
+    if (error) {
+      throw error
+    } else {
+      res.status(200).json(results.rows)
+    }
+  })
+})
 
 app.get('/login', function(req, res) {
 
