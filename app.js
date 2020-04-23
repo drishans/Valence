@@ -1,6 +1,3 @@
-
-
-
 /**
  * This is an example of a basic node.js script that performs
  * the Authorization Code oAuth2 flow to authenticate against
@@ -20,17 +17,6 @@ var client_id = 'c76b8d13d062428585c234eb56e076e8'; // Your client id
 var client_secret = '0cf6dff56c2d44919c3554e397f305f4'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
-//Create Database Connection
-var pgp = require('pg-promise')();
-const dbConfig = {
-	host: 'localhost',
-	port: 5432,
-	database: 'valence_db',
-	user: 'postgres',
-	password: 'alpine'
-};
-var db = pgp(dbConfig);
-
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
@@ -48,22 +34,12 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-var app = express();
+const app = express();
+const db = require('./db')
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
-
-//get comments from db (untested)
-app.get('/comments', function(req, res) {
-  db.query('SELECT * FROM comment ORDER BY date DESC', (error, results) => {
-    if (error) {
-      throw error
-    } else {
-      res.status(200).json(results.rows)
-    }
-  })
-})
 
 app.get('/login', function(req, res) {
 
@@ -169,5 +145,5 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-console.log('https://localhost:8888')
+console.log('http://localhost:8888')
 app.listen(8888);
