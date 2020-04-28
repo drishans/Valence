@@ -96,7 +96,7 @@
             for (i = 0; i < res.items.length; i++) {
                 if (res.items.length >= 20) {
                     buttonHtml =
-                        '<div class="show_more-container"><button class="show_more">Show more</button></div>';
+                        '<div class="show_more-container"><button class="show_more">+</button></div>';
                 }
 
                 if (res.items[i].images.length === 0) {
