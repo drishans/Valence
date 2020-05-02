@@ -67,7 +67,7 @@ Download the macOS Installer: https://nodejs.org/en/#home-downloadhead
 
 `brew install node`
 
-Window
+Windows
 
 * Download the Windows Installer: https://nodejs.org/en/#home-downloadhead
 
