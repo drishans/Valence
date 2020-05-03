@@ -17,6 +17,20 @@ var client_id = 'c76b8d13d062428585c234eb56e076e8'; // Your client id
 var client_secret = '0cf6dff56c2d44919c3554e397f305f4'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
+var commentsRouter = require("./routes/comment")
+
+var pgp = require('pg-promise')(/* options */)
+//var db = pgp('postgres://username:password@host:port/database')
+
+// db.one('SELECT $1 AS value', 123)
+//   .then(function (data) {
+//     console.log('DATA:', data.value)
+//   })
+//   .catch(function (error) {
+//     console.log('ERROR:', error)
+//   })
+
+
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
@@ -35,11 +49,18 @@ var generateRandomString = function(length) {
 var stateKey = 'spotify_auth_state';
 
 const app = express();
-const db = require('./db')
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
+
+// handle endpoints for comments
+app.use("/comments", commentsRouter);
+
+app.get("/", (req, res) => {
+    //handle root
+    res.send("hello root");
+});
 
 app.get('/login', function(req, res) {
 
@@ -144,6 +165,6 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-console.log('Listening on 8888');
-console.log('http://localhost:8888')
-app.listen(8888);
+console.log('Listening on 8484');
+console.log('http://localhost:8484')
+app.listen(8484);
