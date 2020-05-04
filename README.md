@@ -1,5 +1,7 @@
 # CSCI3308 Software Development Project
-**Application Name**: Valence.
+**Application Name**: Valence. 
+
+**Link**: https://valence-final.herokuapp.com/
 
 **Team Number**: 102-4
 
