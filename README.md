@@ -13,8 +13,7 @@
 
 ## Project Description
 
-Valence is built so that users will have their own personalized page where they can upload pictures and can linked to their own personal Spotify account. Our website also allows users to search music based on the artist and album that will direct them to Spotify.
-
+Valence is a photo and music sharing website where users have their own personalized page where they can upload photos to their gallery and add music. The user starts by signing into their own Spotify account and is redirected to the website. Valence allows the user to look through their gallery and also upload their own pictures into the gallery. Music can also be played when hovering over the picture with the mouse. Valence also has a feature where users can comment on your gallery by simply inputting their name and their comment. Comments on your gallery will show below and this creates a way for users to interact with each other. Since you are connected through your own Spotify account when you log in, Valence also allows users to search music based on the artist and album that will direct them to Spotify where you can then add the song to your own playlists. The search feature is designed for users to easily look up information from Spotify based on the user’s input for the album or the artist. The user can also look at their display name, spotify id, email, spotify url, the country they are listening in, and their profile image on their profile page. 
 
 ## Repo organization/structure
 
