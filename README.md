@@ -24,6 +24,8 @@ Valence is a photo and music sharing website where users have their own personal
   * search.js
 
 * **public**
+  * Valence.png
+  * account.html
   * cereal.jpg
   * dark.jpg
   * detail.css
