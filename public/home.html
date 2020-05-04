@@ -32,10 +32,10 @@
     <a href="#home" class="w3-bar-item w3-button"><b>HOME</b>
     <!-- Navigation -->
     <div class="w3-right w3-hide-small">
-      <a href="#Gallery" class="w3-bar-item w3-button">Gallery</a>
-      <a href="search.html" class="w3-bar-item w3-button">Search</a>
+      <a href="#gallery-section1" class="w3-bar-item w3-button">Gallery</a>
       <a href="#Upload" class="w3-bar-item w3-button">Upload</a>
-      <a href="#about" class="w3-bar-item w3-button">Account</a>
+      <a href="search.html" class="w3-bar-item w3-button">Search</a>
+      <a href="account.html" class="w3-bar-item w3-button">Profile</a>
     </div>
   </div>
 </div>
@@ -53,6 +53,7 @@
 // });
 
 // preview image before uploading
+var srcImg;
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -61,19 +62,15 @@ function readURL(input) {
     };
     reader.readAsDataURL(input.files[0]);
   }
+  srcImg = input.files[0].name;
 }
 
 function submitfunction()
 {
-
-  // var uniq= document.createElement("newsun");
-  // uniq.setAttribute("newsun", "blah"); //+(new Date()).getTime(
   section = section +1;
-  $("#blah").attr("id", "section"+ section);
-  $("#section"+ section).prependTo("#gallery-section");
- //$('img#blah').removeAttr('id');
-  //$("#blah").prependTo("#photos");
-
+  $('#blah').attr("id", "section" + section);
+  var addImg = "<a href='" + srcImg + "'class='image'><img src ='"+srcImg+"'></a>";
+  $(addImg).prependTo("#gallery-section1");
 }
 
 
@@ -91,7 +88,10 @@ function submitfunction()
     <div class="inner-width">
       <h1>My Gallery</h1>
       <div class="border"></div>
-      <div class="gallery">
+      <div class="gallery" id = "gallery-section1">
+        <audio id="audio_play">
+          <source src="music.mp3" type="audio/mpeg" />
+        </audio>
 
           <a href="pink.jpg" class="image">
             <img src="pink.jpg" alt="Pink Image">
@@ -117,8 +117,8 @@ function submitfunction()
             <img src="street.jpg">
           </a>
 
-          <a href="sunflower.jpg" class="image">
-            <img src="sunflower.jpg">
+          <a href="sunflower.jpg" class="image" onmouseover ="document.getElementById('audio_play').play();" onClick= "document.getElementById('audio_play').pause();"/>
+            <img src="sunflower.jpg" >
           </a>
 
       </div>
@@ -141,9 +141,10 @@ function submitfunction()
   <div class="w3-container w3-padding-32" id="Upload">
     <h3 class="w3-xxlarge w3-text-black w3-wide">Upload</h3>
     <div class="w3-center">
-      <img id="blah" src="#" />
+      <!-- <img id="blah" src="#" /> -->
       <br>
       <input type='file' onchange="readURL(this);" />
+      <img id="blah" style="display:none;">
       <div class="mt-3">
         <button type="submit" class="btn btn-primary" onclick = "submitfunction()">Submit</button>
       </div>
@@ -172,7 +173,7 @@ function submitfunction()
 
   <script>
     function render(data) {
-      var html = "<div class='commentBox'> <div class='leftPanelImg'><img src='img/pink.jpg'/></div><div class='rightPanel'><span>"
+      var html = "<div class='commentBox'> <div class='leftPanelImg'><img src='pink.jpg'/></div><div class='rightPanel'><span>"
       +data.name+"</span><p>"+data.body+"</p></div><div class='clear'></div></div>";
       $('#container').append(html);
     }
